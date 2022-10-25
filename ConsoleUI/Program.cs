@@ -19,7 +19,7 @@ Kodlarınızı Github'a aktarıp paylaşınız. İncelediğiniz arkadaşlarını
 using Business.Concrete;
 using DataAccess.Concrete.InMemory;
 
-CarManager carManager = new CarManager(new InMemoryProductDal());
+CarManager carManager = new CarManager(new InMemoryCarDal());
 
 foreach (var car in carManager.GetCars())
 {
