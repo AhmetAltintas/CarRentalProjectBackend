@@ -17,11 +17,25 @@ Consolda test ediniz.
 Kodlarınızı Github'a aktarıp paylaşınız. İncelediğiniz arkadaşlarınıza yıldız vermeyi unutmayınız.*/
 
 using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 
-CarManager carManager = new CarManager(new InMemoryCarDal());
+/*CarManager carManager = new CarManager(new InMemoryCarDal());
 
 foreach (var car in carManager.GetCars())
 {
     Console.WriteLine(car.BrandId + " " + car.Description);
 }
+*/
+
+
+CarManager carManager = new CarManager(new EfCardal());
+
+foreach (var car in carManager.GetCarsByColorId(1))
+{
+    Console.WriteLine(car.Description);
+}
+
+
+
+
