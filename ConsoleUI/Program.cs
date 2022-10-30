@@ -36,7 +36,7 @@ CarManager CarManager = new CarManager(new EfCardal());
 
 foreach (var car in CarManager.GetCarDetails())
 {
-    Console.WriteLine(car.Id + " / " + car.BrandName + " / " + car.ModelName + " / " + car.ColorName + " / " + car.DailyPrice);
+    Console.WriteLine( car.BrandName + " / " + car.ModelName + " / " + car.ColorName + " / " + car.DailyPrice);
 }
 
 
