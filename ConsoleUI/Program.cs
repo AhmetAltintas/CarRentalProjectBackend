@@ -30,13 +30,33 @@ foreach (var car in carManager.GetCars())
 */
 
 
-CarManager carManager = new CarManager(new EfCardal());
+//GetCarsByColorId();
 
-foreach (var car in carManager.GetCarsByColorId(1))
+CarManager CarManager = new CarManager(new EfCardal());
+
+foreach (var car in CarManager.GetCarDetails())
 {
-    Console.WriteLine(car.Description);
+    Console.WriteLine(car.Id + " / " + car.BrandName + " / " + car.ModelName + " / " + car.ColorName + " / " + car.DailyPrice);
 }
 
 
 
+
+
+
+
+
+
+
+
+
+static void GetCarsByColorId()
+{
+    CarManager carManager = new CarManager(new EfCardal());
+
+    foreach (var car in carManager.GetCarsByColorId(1))
+    {
+        Console.WriteLine(car.ModelName);
+    }
+}
 

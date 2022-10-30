@@ -1,8 +1,8 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
-using Entities.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -41,6 +41,11 @@ namespace Business.Concrete
         public void Delete(Car car)
         {
             _carDal.Delete(car);
+        }
+
+        public List<CarDetailDTO> GetCarDetails()
+        {
+            return _carDal.GetCarDetails();
         }
 
         public List<Car> GetCars()

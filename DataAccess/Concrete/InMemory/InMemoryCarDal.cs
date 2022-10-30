@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +18,11 @@ namespace DataAccess.Concrete.InMemory
         {
             _cars = new List<Car>
             {
-                new Car{Id=1, BrandId=1, ColorId = 1, ModelYear = "2000", DailyPrice=25250, Description= "GT-R X (R34)"},
-                new Car{Id=2, BrandId=2, ColorId = 8, ModelYear = "1997", DailyPrice=23500, Description= "Supra 4"},
-                new Car{Id=3, BrandId=3, ColorId = 3, ModelYear = "2001", DailyPrice=20150, Description= "Corvette C5"},
-                new Car{Id=4, BrandId=4, ColorId = 6, ModelYear = "2001", DailyPrice=27300, Description= "E46 M3 GTR"},
-                new Car{Id=5, BrandId=5, ColorId = 4, ModelYear = "2000", DailyPrice=17750, Description= "Civic Sedan"}
+                new Car{Id=1, BrandId=1, ColorId = 1, ModelYear = "2000",ModelName = "GT-R X (R34)",DailyPrice=100, Description= "Modified"},
+                new Car{Id=2, BrandId=2, ColorId = 8, ModelYear = "1997",ModelName = "Supra 4", DailyPrice=100, Description= "Modified"},
+                new Car{Id=3, BrandId=3, ColorId = 3, ModelYear = "2001",ModelName = "Corvette C5", DailyPrice=85, Description= "Stock"},
+                new Car{Id=4, BrandId=4, ColorId = 6, ModelYear = "2001",ModelName = "E46 M3 GTR", DailyPrice=110, Description= "Modified"},
+                new Car{Id=5, BrandId=5, ColorId = 4, ModelYear = "2000",ModelName = "Civic Sedan", DailyPrice=70, Description= "Stock"}
 
             };
         }
@@ -52,6 +53,10 @@ namespace DataAccess.Concrete.InMemory
             return _cars.Where(c => c.Id == id).ToList();
         }
 
+        public List<CarDetailDTO> GetCarDetails()
+        {
+            throw new NotImplementedException();
+        }
 
         public void Update(Car car)
         {

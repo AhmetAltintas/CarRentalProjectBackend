@@ -1,4 +1,4 @@
-﻿using Entities.Abstract;
+﻿using Core.DataAccess.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +15,6 @@ namespace Entities.Concrete
         public string ModelYear { get; set; }
         public decimal DailyPrice { get; set; }
         public string Description { get; set; }
+        public string ModelName { get; set; }
     }
 }
