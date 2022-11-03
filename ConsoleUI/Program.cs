@@ -30,14 +30,7 @@ foreach (var car in carManager.GetCars())
 */
 
 
-//GetCarsByColorId();
-
-CarManager CarManager = new CarManager(new EfCardal());
-
-foreach (var car in CarManager.GetCarDetails())
-{
-    Console.WriteLine( car.BrandName + " / " + car.ModelName + " / " + car.ColorName + " / " + car.DailyPrice);
-}
+GetCarDetailsTest();
 
 
 
@@ -50,13 +43,32 @@ foreach (var car in CarManager.GetCarDetails())
 
 
 
-static void GetCarsByColorId()
+
+
+
+
+
+
+
+
+
+
+static void GetCarDetailsTest()
 {
     CarManager carManager = new CarManager(new EfCardal());
 
-    foreach (var car in carManager.GetCarsByColorId(1))
+    var result = carManager.GetCarDetails();
+
+    if (result.Success)
     {
-        Console.WriteLine(car.ModelName);
+        foreach (var car in carManager.GetCarDetails().Data)
+        {
+            Console.WriteLine(car.BrandName + car.ModelName + " / " + car.ColorName + " / " + car.DailyPrice);
+        }
+    }
+    else
+    {
+        Console.WriteLine(result.Message);
     }
 }
 

@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.DataAccess.Entities
+namespace Core.Utilities.Results
 {
-    public interface IDto
+    public interface IResult
     {
+        bool Success { get; }
+        string Message { get; }
     }
 }
