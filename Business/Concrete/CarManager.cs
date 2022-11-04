@@ -29,7 +29,7 @@ namespace Business.Concrete
         {
             if (car.ModelName.Length < 2)
             {
-                return new ErrorResult(Messages.CarNameİnvalid);
+                return new ErrorResult(Messages.CarNameInvalid);
             }
             _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);
@@ -43,7 +43,7 @@ namespace Business.Concrete
 
         public IDataResult<Car> GetById(int id)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == id));
+            return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == id));
         }
 
         public IDataResult<List<CarDetailDTO>> GetCarDetails()

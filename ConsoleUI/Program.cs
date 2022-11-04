@@ -1,44 +1,32 @@
-﻿/*Kampımızla beraber paralelde geliştireceğimiz bir projemiz daha olacak. Araba kiralama sistemi yazıyoruz.
-
-Yepyeni bir proje oluşturunuz. Adı ReCapProject olacak. (Tekrar ve geliştirme projesi)
-
-Entities, DataAccess, Business ve Console katmanlarını oluşturunuz.
-
-Bir araba nesnesi oluşturunuz. "Car"
-
-Özellik olarak : Id, BrandId, ColorId, ModelYear, DailyPrice, Description alanlarını ekleyiniz. (Brand = Marka)
-
-InMemory formatta GetById, GetAll, Add, Update, Delete oprasyonlarını yazınız.
-
-Consolda test ediniz.
-
-Önemli: Copy - Paste yasak fakat kamp projesinden destek almak serbest.
-
-Kodlarınızı Github'a aktarıp paylaşınız. İncelediğiniz arkadaşlarınıza yıldız vermeyi unutmayınız.*/
-
-using Business.Concrete;
+﻿using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
+using Entities.Concrete;
 using System.Net.Http.Headers;
 
-/*CarManager carManager = new CarManager(new InMemoryCarDal());
 
-foreach (var car in carManager.GetCars())
+//GetCarDetailsTest();
+
+UserManager userManager = new UserManager(new EfUserDal());
+User user1 = new User { UserId = 1, FirstName = "Ahmet", LastName = "ALTINTAŞ", Email = "ahmtaltnts35@gmail.com", Password = "12345abc" };
+userManager.Add(user1);
+
+CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+Customer customer1 = new Customer { CustomerId = 1, UserId = 1, CompanyName = "ALTNTS" };
+customerManager.Add(customer1);
+
+RentManager rentManager = new RentManager(new EfRentDal());
+Rent rent1 = new Rent {RentId = 1, CarId = 1, CustomerId = 1, RentDate = new DateTime(4,11,2022), ReturnDate = new DateTime(6,11,2022)};
+rentManager.Add(rent1);
+Rent rent2 = new Rent { RentId = 2, CarId = 2, CustomerId = 1, RentDate = new DateTime(4, 11, 2022), ReturnDate = new DateTime(6, 11, 2022) };
+rentManager.Add(rent2);
+
+
+var result = rentManager.GetRentDetails();
+foreach (var rent in result.Data)
 {
-    Console.WriteLine(car.BrandId + " " + car.Description);
+    Console.WriteLine(rent.RentId + " numaralı kiralama başlangıç tarihi :  " + rent.RentDate + ", bitiş tarihi : " + rent.ReturnDate);
 }
-*/
-
-
-GetCarDetailsTest();
-
-
-
-
-
-
-
-
 
 
 
