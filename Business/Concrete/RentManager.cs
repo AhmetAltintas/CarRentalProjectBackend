@@ -26,15 +26,12 @@ namespace Business.Concrete
 
         public IResult Add(Rent rent)
         {
-            if (rent.ReturnDate == null && rent.RentDate >= DateTime.Now )
-            {
-                _rentDal.Add(rent);
-                return new SuccessResult(Messages.RentAdded);
-            }
-            else
+            if (rent.ReturnDate != null && rent.RentDate <= DateTime.Now )
             {
                 return new ErrorResult(Messages.RentInvalid);
             }
+            _rentDal.Add(rent);
+            return new SuccessResult(Messages.RentAdded);
         }
 
         public IResult Delete(Rent rent)
