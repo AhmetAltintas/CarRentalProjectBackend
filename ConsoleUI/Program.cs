@@ -5,9 +5,9 @@ using Entities.Concrete;
 using System.Net.Http.Headers;
 
 
-//GetCarDetailsTest();
+GetCarDetailsTest();
 
-GetRentDetailsTest();
+//GetRentDetailsTest();
 
 
 
