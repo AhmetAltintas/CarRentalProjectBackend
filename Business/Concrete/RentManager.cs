@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -24,6 +26,7 @@ namespace Business.Concrete
             _rentDal = rentDal;
         }
 
+        [ValidationAspect(typeof(RentValidator))]
         public IResult Add(Rent rent)
         {
             if (rent.ReturnDate != null && rent.RentDate <= DateTime.Now )
@@ -45,6 +48,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<RentlDetailDTO>>(_rentDal.GetRentDetails());
         }
 
+        [ValidationAspect(typeof(RentValidator))]
         public IResult Update(Rent rent)
         {
             _rentDal.Update(rent);
