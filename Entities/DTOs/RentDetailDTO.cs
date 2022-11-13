@@ -11,7 +11,13 @@ namespace Entities.DTOs
     {
         public int RentId { get; set; }
         public int CarId { get; set; }
-        public int CustomerId { get; set; }
+        public int BrandId { get; set; }
+
+        public string FirstName { get; set; }
+        public string Lastname { get; set; }
+        public string BrandName { get; set; }
+        public string ColorName { get; set; }
+        public string ModelName { get; set; }
         public DateTime RentDate { get; set; }
         public DateTime ReturnDate { get; set; }
     }

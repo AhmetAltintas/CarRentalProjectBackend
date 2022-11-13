@@ -17,18 +17,28 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (DbForRecapContext context = new DbForRecapContext())
             {
-                var result = from r in context.Rentals
-                             join c in context.Cars
-                             on r.CarId equals c.CarId
+                var result = from ca in context.Cars
+                             join b in context.Brands
+                             on ca.BrandId equals b.BrandId
+                             join re in context.Rentals
+                             on ca.CarId equals re.CarId
+                             join co in context.Colors
+                             on ca.ColorId equals co.ColorId
+                             from u in context.Users
                              join cu in context.Customers
-                             on r.CustomerId equals cu.CustomerId
+                             on u.UserId equals cu.UserId
                              select new RentlDetailDTO
                              {
-                                 RentId = r.RentId,
-                                 CarId = c.CarId,
-                                 CustomerId = cu.CustomerId,
-                                 RentDate = r.RentDate,
-                                 ReturnDate = r.ReturnDate,
+                                 CarId = ca.CarId,
+                                 BrandId = b.BrandId,
+                                 ColorName = co.ColorName,
+                                 BrandName = b.BrandName,
+                                 ModelName = ca.ModelName,
+                                 RentId = re.RentId,
+                                 RentDate = re.RentDate,
+                                 ReturnDate = re.ReturnDate,
+                                 FirstName = u.FirstName,
+                                 Lastname = u.LastName
 
                              };
                 return result.ToList();
