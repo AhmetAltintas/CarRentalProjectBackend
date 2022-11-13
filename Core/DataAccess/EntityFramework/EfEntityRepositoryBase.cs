@@ -37,7 +37,8 @@ namespace Core.DataAccess.EntityFramework
         {
             using (TContext context = new TContext())
             {
-                return context.Set<TEntity>().SingleOrDefault(filter);
+                var result = context.Set<TEntity>().SingleOrDefault(filter);
+                return result;
             }
         }
 
@@ -45,9 +46,8 @@ namespace Core.DataAccess.EntityFramework
         {
             using (TContext context = new TContext())
             {
-                return filter == null
-                    ? context.Set<TEntity>().ToList()
-                    : context.Set<TEntity>().Where(filter).ToList();
+                return filter == null ? context.Set<TEntity>().ToList()
+                                    : context.Set<TEntity>().Where(filter).ToList();
             }
         }
 
@@ -59,7 +59,6 @@ namespace Core.DataAccess.EntityFramework
                 updatedEntity.State = EntityState.Modified;
                 context.SaveChanges();
             }
-
         }
     }
 }

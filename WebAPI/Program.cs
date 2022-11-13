@@ -17,14 +17,6 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//builder.Services.AddSingleton<ICarService, CarManager>();
-//builder.Services.AddSingleton<ICarDal, EfCardal>();
-//builder.Services.AddSingleton<IUserService, UserManager>();
-//builder.Services.AddSingleton<IUserDal, EfUserDal>();
-//builder.Services.AddSingleton<ICustomerService, CustomerManager>();
-//builder.Services.AddSingleton<ICustomerDal, EfCustomerDal>();
-//builder.Services.AddSingleton<IRentService, RentManager>();
-//builder.Services.AddSingleton<IRentDal, EfRentDal>();
 
 
 
