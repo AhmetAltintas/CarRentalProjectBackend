@@ -35,7 +35,7 @@ namespace Business.Constants
         public static string CarImageAdded = "Araba görseli eklendi.";
         public static string CarImageDeleted = "Araba görseli silindi. ";
         public static string CarImageUpdated = "Araba görseli güncellendi. ";
-        
+
         public static string AuthorizationDenied = "Yetkiniz yok";
 
         public static string UserRegistered = "Kayıt oldu";
@@ -44,5 +44,16 @@ namespace Business.Constants
         public static string SuccessfulLogin = "Başarılı giriş.";
         public static string UserAlreadyExists = "Kullanıcı zaten var.";
         public static string AccessTokenCreated = "Access token başarıyla oluşturuldu.";
+
+        public static string BrandAdded = "Marka eklendi.";
+        public static string BrandDeleted = "Marka silindi.";
+        public static string BrandUpdated = "Marka güncellendi.";
+
+
+        public static string SuccessfullyListed = "Başarıyla listelendi.";
+
+        public static string ColorAdded = "Renk eklendi.";
+        public static string ColorDeleted = "Renk silindi.";
+        public static string ColorUpdated = "Renk güncellendi.";
     }
 }

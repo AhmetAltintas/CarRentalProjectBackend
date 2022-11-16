@@ -1,4 +1,5 @@
 ﻿using Core.Utilities.Results;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
@@ -14,6 +15,7 @@ namespace Business.Abstract
         IResult Add(Rent rent);
         IResult Update(Rent rent);
         IResult Delete(Rent rent);
+        IDataResult<Rent> GetById(int id);
         IDataResult<List<RentlDetailDTO>> GetRentDetails();
     }
 }

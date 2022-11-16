@@ -9,6 +9,7 @@ namespace Core.Utilities.Security.Hashing
 {
     public class HashingHelper
     {
+
         public static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using (var hmac = new System.Security.Cryptography.HMACSHA512())
@@ -32,6 +33,8 @@ namespace Core.Utilities.Security.Hashing
                 }
                 return true;
             }
+
+
         }
     }
 }
