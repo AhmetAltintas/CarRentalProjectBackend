@@ -1,6 +1,9 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -26,10 +29,13 @@ namespace Business.Concrete
             _rentDal = rentDal;
         }
 
+
+        [CacheRemoveAspect("ICarService.Get")]
+        [SecuredOperation("admin,customer,user")]
         [ValidationAspect(typeof(RentValidator))]
         public IResult Add(Rent rent)
         {
-            if (rent.ReturnDate != null && rent.RentDate <= DateTime.Now )
+            if (rent.ReturnDate != null && rent.RentDate <= DateTime.Now)
             {
                 return new ErrorResult(Messages.RentInvalid);
             }
@@ -37,23 +43,32 @@ namespace Business.Concrete
             return new SuccessResult(Messages.RentAdded);
         }
 
+
+        [SecuredOperation("admin")]
         public IResult Delete(Rent rent)
         {
             _rentDal.Delete(rent);
             return new SuccessResult(Messages.RentDeleted);
         }
 
+
+        [CacheAspect]
+        [PerformanceAspect(5)]
         public IDataResult<List<RentlDetailDTO>> GetRentDetails()
         {
             return new SuccessDataResult<List<RentlDetailDTO>>(_rentDal.GetRentDetails());
         }
 
+
+        [SecuredOperation("admin")]
+        [ValidationAspect(typeof(RentValidator))]
         [ValidationAspect(typeof(RentValidator))]
         public IResult Update(Rent rent)
         {
             _rentDal.Update(rent);
             return new SuccessResult(Messages.RentUpdated);
         }
+
 
         public IDataResult<Rent> GetById(int id)
         {
