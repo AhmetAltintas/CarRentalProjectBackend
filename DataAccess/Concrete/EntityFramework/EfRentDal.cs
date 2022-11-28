@@ -1,4 +1,5 @@
-﻿using Core.DataAccess.EntityFramework;
+﻿using Castle.Core.Resource;
+using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -27,9 +28,14 @@ namespace DataAccess.Concrete.EntityFramework
                              from u in context.Users
                              join cu in context.Customers
                              on u.Id equals cu.UserId
+                             from ren in context.Rents
+                             join cus in context.Customers
+                             on ren.CustomerId equals cus.Id
+                             
                              select new RentlDetailDTO
                              {
-                                 RentId = re.Id,
+                                 Id = re.Id,
+                                 CustomerId = cus.Id,
                                  FirstName = u.FirstName,
                                  LastName = u.LastName,
                                  BrandName = b.BrandName,

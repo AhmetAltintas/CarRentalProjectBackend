@@ -1,4 +1,5 @@
 ﻿using Core.Entities.Concrete;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,5 +58,10 @@ namespace Business.Constants
         public static string ColorUpdated = "Renk güncellendi.";
         
         public static string CarIsAlreadyExists = "Araba zaten var.";
+        public static string CarDetailsListed = "Araba detayları listelendi.";
+
+
+        public static string CarImageLimitExceeded = "Araba görsel limiti dolu.";
+        public static string CarImageDoesNotFound = "Araç resmi bulunamadı.";
     }
 }

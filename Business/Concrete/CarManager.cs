@@ -13,6 +13,7 @@ using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
@@ -69,9 +70,24 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<List<CarDetailDTO>>(Messages.MaintenanceTime);
             }
+
             return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetCarDetails());
         }
 
+        public IDataResult<List<CarDetailDTO>> GetCarDetailsByBrandId(int brandId)
+        {
+            return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetCarDetailsByBrandId(brandId), Messages.CarDetailsListed);
+        }
+
+        public IDataResult<List<CarDetailDTO>> GetCarDetailsByColorId(int colorId)
+        {
+            return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetCarDetailsByColorId(colorId), Messages.CarDetailsListed);
+        }
+
+        public IDataResult<CarDetailDTO> GetCarDetailsById(int id)
+        {
+            return new SuccessDataResult<CarDetailDTO>(_carDal.GetCarDetailsById(id), Messages.CarDetailsListed);
+        }
 
         [CacheAspect]
         [PerformanceAspect(5)]
@@ -85,15 +101,15 @@ namespace Business.Concrete
         }
 
 
-        public IDataResult<List<Car>> GetCarsByBrandId(int id)
+        public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == id));
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == brandId));
         }
 
 
-        public IDataResult<List<Car>> GetCarsByColorId(int id)
+        public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == id));
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == colorId));
         }
 
 

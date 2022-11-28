@@ -5,9 +5,9 @@ using Entities.Concrete;
 using System.Net.Http.Headers;
 
 
-GetCarDetailsTest();
+//GetCarDetailsTest();
 
-//GetRentDetailsTest();
+GetRentDetailsTest();
 
 
 
@@ -45,6 +45,6 @@ static void GetRentDetailsTest()
     var result = rentManager.GetRentDetails();
     foreach (var rent in result.Data)
     {
-        Console.WriteLine(rent.RentId + " numaralı kiralama başlangıç tarihi :  " + rent.RentDate + ", bitiş tarihi : " + rent.ReturnDate);
+        Console.WriteLine(rent.Id + " numaralı kiralama başlangıç tarihi :  " + rent.RentDate + ", bitiş tarihi : " + rent.ReturnDate);
     }
 }

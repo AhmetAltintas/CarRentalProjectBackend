@@ -18,11 +18,11 @@ namespace DataAccess.Concrete.InMemory
         {
             _cars = new List<Car>
             {
-                new Car{Id=1, BrandId=1, ColorId = 2, ModelYear = "2000",ModelName = "GT-R X (R34)",DailyPrice=100, Description= "Modified"},
-                new Car{Id=2, BrandId=2, ColorId = 8, ModelYear = "1997",ModelName = "Supra 4", DailyPrice=100, Description= "Modified"},
-                new Car{Id=3, BrandId=3, ColorId = 3, ModelYear = "2001",ModelName = "Corvette C5", DailyPrice=85, Description= "Stock"},
-                new Car{Id=4, BrandId=4, ColorId = 1, ModelYear = "2001",ModelName = "E46 M3 GTR", DailyPrice=110, Description= "Modified"},
-                new Car{Id=5, BrandId=5, ColorId = 4, ModelYear = "2000",ModelName = "Civic Sedan", DailyPrice=70, Description= "Stock"}
+                new Car{Id=1, BrandId=1, ColorId = 2, ModelYear = 2000,ModelName = "GT-R X (R34)",DailyPrice=100, Description= "Modified"},
+                new Car{Id=2, BrandId=2, ColorId = 8, ModelYear = 1997,ModelName = "Supra 4", DailyPrice=100, Description= "Modified"},
+                new Car{Id=3, BrandId=3, ColorId = 3, ModelYear = 2001,ModelName = "Corvette C5", DailyPrice=85, Description= "Stock"},
+                new Car{Id=4, BrandId=4, ColorId = 1, ModelYear = 2001,ModelName = "E46 M3 GTR", DailyPrice=110, Description= "Modified"},
+                new Car{Id=5, BrandId=5, ColorId = 4, ModelYear = 2000,ModelName = "Civic Sedan", DailyPrice=70, Description= "Stock"}
 
             };
         }
@@ -54,6 +54,21 @@ namespace DataAccess.Concrete.InMemory
         }
 
         public List<CarDetailDTO> GetCarDetails()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarDetailDTO> GetCarDetailsByBrandId(int brandId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarDetailDTO> GetCarDetailsByColorId(int colorId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public CarDetailDTO GetCarDetailsById(int id)
         {
             throw new NotImplementedException();
         }

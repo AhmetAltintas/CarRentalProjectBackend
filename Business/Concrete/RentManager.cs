@@ -52,8 +52,8 @@ namespace Business.Concrete
         }
 
 
+        //[PerformanceAspect(5)]
         [CacheAspect]
-        [PerformanceAspect(5)]
         public IDataResult<List<RentlDetailDTO>> GetRentDetails()
         {
             return new SuccessDataResult<List<RentlDetailDTO>>(_rentDal.GetRentDetails());
