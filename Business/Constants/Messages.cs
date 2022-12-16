@@ -56,12 +56,25 @@ namespace Business.Constants
         public static string ColorAdded = "Renk eklendi.";
         public static string ColorDeleted = "Renk silindi.";
         public static string ColorUpdated = "Renk güncellendi.";
-        
+
         public static string CarIsAlreadyExists = "Araba zaten var.";
         public static string CarDetailsListed = "Araba detayları listelendi.";
 
 
         public static string CarImageLimitExceeded = "Araba görsel limiti dolu.";
         public static string CarImageDoesNotFound = "Araç resmi bulunamadı.";
+
+
+        public static string RentDateCannotBeBeforeToday = "Kiralama tarihi günümüzden önce olamaz.";
+        public static string ReturnDateCannotBeLeftBlankAsThisCarWasAlsoRentedAtALaterDate = "Bu araç daha sonra bir tarihte kiralanmış olduğu için iade tarihi boş bırakılamaz";
+        public static string ThisCarHasNotBeenReturned = "Araç henüz geri dönmedi";
+        public static string ReturnDateCannotBeEarlierThanRentDate = "Dönüş tarihi kiralama tarihinden önce olamaz";
+        public static string ThisCarIsAlreadyRentedInSelectedDateRange = "Araba bu tarihler arasında zaten kiralanmıştır";
+
+        public static string PaymentSuccessful = "Ödeme başarılı.";
+        public static string PaymentDenied = "Ödeme bilgileri reddedildi.";
+
+        public static string CardNumberMustConsistOfLettersOnly = "Kart numarası sadece rakamlardan oluşmalıdır.";
+        public static string LastTwoDigitsOfYearMustBeEntered = "Yılın son iki hanesini giriniz.";
     }
 }

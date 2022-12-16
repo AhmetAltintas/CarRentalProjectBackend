@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -68,6 +69,19 @@ namespace WebAPI.Controllers
         public IActionResult GetRentDetailsByCarId(int carId)
         {
             var result = _rentService.GetRentDetailsByCarId(carId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
+        [HttpPost("rulesforadding")]
+        public IActionResult RulesForAdding(Rent rent)
+        {
+            var result = _rentService.RulesForAdding(rent);
+
             if (result.Success)
             {
                 return Ok(result);
