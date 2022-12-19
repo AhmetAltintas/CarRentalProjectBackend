@@ -32,11 +32,11 @@ namespace Business.Concrete
 
 
         [CacheRemoveAspect("ICarService.Get")]
-        [SecuredOperation("admin,customer")]
+        //[SecuredOperation("admin,customer")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
-            IResult result = BusinessRules.Run(CheckIfCarIdIsAlreadyExists(car.BrandId));
+            IResult result = BusinessRules.Run(CheckIfCarIdIsAlreadyExists(car.ModelName));
 
             if (result != null)
             {
@@ -48,7 +48,7 @@ namespace Business.Concrete
         }
 
 
-        [SecuredOperation("admin,customer")]
+        //[SecuredOperation("admin,customer")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Delete(Car car)
         {
@@ -113,7 +113,7 @@ namespace Business.Concrete
         }
 
 
-        [SecuredOperation("admin,customer")]
+        //[SecuredOperation("admin,customer")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
         {
@@ -127,9 +127,9 @@ namespace Business.Concrete
 
 
 
-        private IResult CheckIfCarIdIsAlreadyExists(int brandId)
+        private IResult CheckIfCarIdIsAlreadyExists(string modelName)
         {
-            var result = _carDal.GetAll(c => c.BrandId == brandId).Any();
+            var result = _carDal.GetAll(c => c.ModelName == modelName).Any();
             if (result == true)
             {
                 return new ErrorResult(Messages.CarIsAlreadyExists);
