@@ -9,7 +9,7 @@ namespace Business.ValidationRules.FluentValidation
         {
             RuleFor(b => b.BrandName).NotEmpty();
             RuleFor(b => b.BrandName).MinimumLength(2);
-            RuleFor(b => b.Id).NotEmpty();
+
         }
     }
 }
