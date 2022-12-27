@@ -32,7 +32,7 @@ namespace Business.Concrete
 
 
         [CacheRemoveAspect("ICarService.Get")]
-        //[SecuredOperation("admin,customer")]
+        [SecuredOperation("admin,customer")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
@@ -48,7 +48,7 @@ namespace Business.Concrete
         }
 
 
-        //[SecuredOperation("admin,customer")]
+        [SecuredOperation("admin,customer")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Delete(Car car)
         {
@@ -57,7 +57,7 @@ namespace Business.Concrete
         }
 
 
-        public IDataResult<Car> GetById(int id)
+        public IDataResult<Car> GetById(int id) 
         {
             return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == id));
         }
@@ -113,7 +113,7 @@ namespace Business.Concrete
         }
 
 
-        //[SecuredOperation("admin,customer")]
+        [SecuredOperation("admin,customer")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
         {
