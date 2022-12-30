@@ -36,6 +36,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  Id = ca.Id,
                                  ModelYear = ca.ModelYear,
                                  Description = ca.Description,
+                                 MinFindeksScore = ca.MinFindeksScore,
 
                              };
                 return result.ToList();
@@ -63,7 +64,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  Id = ca.Id,
                                  ModelYear = ca.ModelYear,
                                  Description = ca.Description,
-
+                                 MinFindeksScore = ca.MinFindeksScore,
                              };
                 return result.ToList();
             }
@@ -90,7 +91,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  Id = ca.Id,
                                  ModelYear = ca.ModelYear,
                                  Description = ca.Description,
-
+                                 MinFindeksScore = ca.MinFindeksScore,
                              };
                 return result.First();
             }
@@ -116,6 +117,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  Id = ca.Id,
                                  ModelYear = ca.ModelYear,
                                  Description = ca.Description,
+                                 MinFindeksScore = ca.MinFindeksScore,
 
                              };
                 return result.ToList();
