@@ -7,7 +7,7 @@ using System.Net.Http.Headers;
 
 //GetCarDetailsTest();
 
-GetRentDetailsTest();
+
 
 
 
@@ -36,15 +36,5 @@ static void GetCarDetailsTest()
     else
     {
         Console.WriteLine(result.Message);
-    }
-}
-
-static void GetRentDetailsTest()
-{
-    RentManager rentManager = new RentManager(new EfRentDal());
-    var result = rentManager.GetRentDetails();
-    foreach (var rent in result.Data)
-    {
-        Console.WriteLine(rent.Id + " numaralı kiralama başlangıç tarihi :  " + rent.RentDate + ", bitiş tarihi : " + rent.ReturnDate);
     }
 }

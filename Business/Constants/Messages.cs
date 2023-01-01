@@ -76,5 +76,6 @@ namespace Business.Constants
 
         public static string CardNumberMustConsistOfLettersOnly = "Kart numarası sadece rakamlardan oluşmalıdır.";
         public static string LastTwoDigitsOfYearMustBeEntered = "Yılın son iki hanesini giriniz.";
+        public static string CustomersFindeksScoreIsNotEnough = "Findeks skorunuz bu araç için yetersiz";
     }
 }

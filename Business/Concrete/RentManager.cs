@@ -24,10 +24,14 @@ namespace Business.Concrete
     public class RentManager : IRentService
     {
         IRentDal _rentDal;
+        ICarService _carService;
+        ICustomerService _customerService;
 
-        public RentManager(IRentDal rentDal)
+        public RentManager(IRentDal rentDal, ICarService carService, ICustomerService customerService)
         {
             _rentDal = rentDal;
+            _carService = carService;
+            _customerService = customerService;
         }
 
 
@@ -94,7 +98,8 @@ namespace Business.Concrete
                 CheckIfReturnDateIsBeforeThanRentDate(rent.ReturnDate, rent.RentDate),
                 CheckIfThisCarIsAlreadyRentedInSelectedDateRange(rent),
                 CheckIfThisCarIsRentedAtALaterDateWhileReturnDateIsNull(rent),
-                CheckIfThisCarHasBeenReturned(rent));
+                CheckIfThisCarHasBeenReturned(rent),
+                CheckIfFindeksScoreIsEnough(rent.CarId, rent.CustomerId));
             if (result != null)
             {
                 return result;
@@ -172,9 +177,20 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        private IResult CheckIfFindeksScoreIsEnough(int carId, int customerId)
+        {
+            var carResult = _carService.GetById(carId);
+            if (!carResult.Success) return new ErrorResult(carResult.Message);
 
+            var customerResult = _customerService.GetById(customerId);
+            if (!customerResult.Success) return new ErrorResult(customerResult.Message);
 
+            if (carResult.Data.MinFindeksScore > customerResult.Data.FindeksScore)
+            {
+                return new ErrorResult(Messages.CustomersFindeksScoreIsNotEnough);
+            }
+            return new SuccessResult();
 
-
+        }
     }
 }
