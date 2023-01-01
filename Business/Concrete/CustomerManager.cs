@@ -60,9 +60,10 @@ namespace Business.Concrete
         }
 
 
-        public IDataResult<Customer> GetById(Expression<Func<Customer, bool>> filter)
+        public IDataResult<Customer> GetById(int id)
         {
-            return new SuccessDataResult<Customer>(_customerDal.Get(filter));
+            var result = _customerDal.Get(c=> c.Id == id);
+            return new SuccessDataResult<Customer>(result);
         }
     }
 }
