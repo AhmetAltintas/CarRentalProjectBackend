@@ -22,6 +22,7 @@ namespace Business.Constants
         public static string UserAdded = "Kullanıcı eklendi.";
         public static string UserDeleted = "Kullanıcı silindi.";
         public static string UserUpdated = "Kullanıcı güncellendi.";
+        public static string EmailIsAlreadyRegistered = "Bu e-posta adresine kayıtlı bir hesap zaten var.";
 
         public static string CustomerInvalid = "Müşteri geçersiz.";
         public static string CustomerAdded = "Müşteri eklendi.";
@@ -77,5 +78,6 @@ namespace Business.Constants
         public static string CardNumberMustConsistOfLettersOnly = "Kart numarası sadece rakamlardan oluşmalıdır.";
         public static string LastTwoDigitsOfYearMustBeEntered = "Yılın son iki hanesini giriniz.";
         public static string CustomersFindeksScoreIsNotEnough = "Findeks skorunuz bu araç için yetersiz";
+        
     }
 }
