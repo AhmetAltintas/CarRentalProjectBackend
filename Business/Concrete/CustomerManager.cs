@@ -65,5 +65,17 @@ namespace Business.Concrete
             var result = _customerDal.Get(c=> c.Id == id);
             return new SuccessDataResult<Customer>(result);
         }
+
+        public IResult FakeCustomerAdd(int userId)
+        {
+            _customerDal.Add(new Customer { UserId = userId, FindeksScore = 1234, CompanyName = "--Örnek Şirket--" });
+            return new SuccessResult(Messages.CustomerAdded);
+        }
+
+        public IDataResult<Customer> GetByUserId(int userId)
+        {
+            var result = _customerDal.Get(c => c.UserId == userId);
+            return new SuccessDataResult<Customer>(result);
+        }
     }
 }
