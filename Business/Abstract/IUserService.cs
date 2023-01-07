@@ -21,5 +21,8 @@ namespace Business.Abstract
         IDataResult<UserDTO> GetDTOById(int id);
 
         IDataResult<List<OperationClaim>> GetClaims(User user);
+
+        IResult UpdateFirstAndLastName(UpdateFirstAndLastNameDTO updateFirstAndLastNameDTO);
+        IResult UpdateEmail(UpdateEmailDTO updateEmailDTO);
     }
 }

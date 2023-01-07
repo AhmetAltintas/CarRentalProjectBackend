@@ -39,11 +39,13 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserAdded);
         }
 
+
         public IResult Update(User user)
         {
             _userDal.Update(user);
             return new SuccessResult(Messages.UserUpdated);
         }
+
 
         public IResult Delete(User user)
         {
@@ -51,11 +53,13 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserDeleted);
         }
 
+
         public IDataResult<List<User>> GetAll()
         {
             var result = _userDal.GetAll();
             return new SuccessDataResult<List<User>>(result);
         }
+
 
         public IDataResult<User> GetById(int id)
         {
@@ -69,17 +73,45 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(result);
         }
 
+
         public IDataResult<UserDTO> GetDTOById(int id)
         {
             var result = _userDal.GetDTO(u => u.Id == id);
             return new SuccessDataResult<UserDTO>(result);
         }
 
+
         public IDataResult<List<OperationClaim>> GetClaims(User user)
         {
             var result = _userDal.GetClaims(user);
             return new SuccessDataResult<List<OperationClaim>>(result);
         }
+
+
+        public IResult UpdateFirstAndLastName(UpdateFirstAndLastNameDTO updateFirstAndLastNameDTO)
+        {
+            var result = _userDal.Get(u => u.Id == updateFirstAndLastNameDTO.Id);
+            result.FirstName = updateFirstAndLastNameDTO.FirstName;
+            result.LastName = updateFirstAndLastNameDTO.LastName;
+            _userDal.Update(result);
+            return new SuccessResult(Messages.FirstAndLastNameUpdated);
+        }
+
+
+        public IResult UpdateEmail(UpdateEmailDTO updateEmailDTO)
+        {
+            var rulesResult = BusinessRules.Run(CheckIfEmailIsAlreadyRegistered(updateEmailDTO.Email));
+            if (!rulesResult.Success) return rulesResult;
+
+            var result = _userDal.Get(u => u.Id == updateEmailDTO.Id);
+            result.Email = updateEmailDTO.Email;
+            _userDal.Update(result);
+            return new SuccessResult(Messages.EmailUpdated);
+        }
+
+
+
+
 
 
         private IResult CheckIfEmailIsAlreadyRegistered(string email)

@@ -64,6 +64,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)
         {
@@ -74,5 +75,15 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
+        [HttpGet("getByUserId")]
+        public IActionResult GetByUserId(int userId)
+        {
+            var result = _customerService.GetByUserId(userId);
+            if (!result.Success) return BadRequest(result);
+
+            return Ok(result);
+        }
+
     }
 }

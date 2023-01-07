@@ -69,5 +69,33 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
+        [HttpGet("getById")]
+        public IActionResult GetById(int id)
+        {
+            var result = _paymentService.GetById(id);
+            if (!result.Success) return BadRequest(result);
+
+            return Ok(result);
+        }
+
+        [HttpGet("getAllByCustomerId")]
+        public IActionResult GetAllByCustomerId(int customerId)
+        {
+            var result = _paymentService.GetAllByCustomerId(customerId);
+            if (!result.Success) return BadRequest(result);
+
+            return Ok(result);
+        }
+
+        [HttpPost("checkIfThisCardIsAlreadySavedForThisCustomer")]
+        public IActionResult CheckIfThisCardIsAlreadySavedForThisCustomer(Payment payment)
+        {
+            var result = _paymentService.CheckIfThisCardIsAlreadySavedForThisCustomer(payment);
+            if (!result.Success) return BadRequest(result);
+
+            return Ok(result);
+        }
+
     }
 }
