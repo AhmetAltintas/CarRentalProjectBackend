@@ -23,5 +23,7 @@ namespace Entities.DTOs
         
         [Range(0,1900)]
         public int MinFindeksScore { get; set; }
+
+        public List<CarImage> CarImages { get; set; }
     }
 }

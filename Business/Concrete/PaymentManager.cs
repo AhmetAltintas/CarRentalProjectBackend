@@ -29,6 +29,13 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        public IResult CheckIfThisCardIsAlreadySavedForThisCustomer(Payment payment)
+        {
+            var result = _paymentDal.Get(p => p.CustomerId == payment.CustomerId && p.CardNumber == payment.CardNumber);
+            if (result != null) return new ErrorResult(Messages.ThisCardIsAlreadyRegisteredForThisCustomer);
+
+            return new SuccessResult();
+        }
 
         public IResult Delete(Payment payment)
         {
@@ -42,6 +49,17 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Payment>>(_paymentDal.GetAll());
         }
 
+        public IDataResult<List<Payment>> GetAllByCustomerId(int customerId)
+        {
+            var result = _paymentDal.GetAll(p => p.CustomerId == customerId);
+            return new SuccessDataResult<List<Payment>>(result);
+        }
+
+        public IDataResult<Payment> GetById(int id)
+        {
+            var result = _paymentDal.Get(p => p.Id == id);
+            return new SuccessDataResult<Payment>(result);
+        }
 
         [ValidationAspect(typeof(PaymentValidator))]
         public IResult Pay(Payment payment)

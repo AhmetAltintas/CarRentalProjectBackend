@@ -46,6 +46,8 @@ namespace Business.Constants
         public static string SuccessfulLogin = "Başarılı giriş.";
         public static string UserAlreadyExists = "Kullanıcı zaten var.";
         public static string AccessTokenCreated = "Access token başarıyla oluşturuldu.";
+        public static string EmailUpdated = "E-posta güncellendi.";
+        public static string FirstAndLastNameUpdated = "Ad & soyad güncellendi.";
 
         public static string BrandAdded = "Marka eklendi.";
         public static string BrandDeleted = "Marka silindi.";
@@ -78,6 +80,11 @@ namespace Business.Constants
         public static string CardNumberMustConsistOfLettersOnly = "Kart numarası sadece rakamlardan oluşmalıdır.";
         public static string LastTwoDigitsOfYearMustBeEntered = "Yılın son iki hanesini giriniz.";
         public static string CustomersFindeksScoreIsNotEnough = "Findeks skorunuz bu araç için yetersiz";
-        
+        public static string ThisCardIsAlreadyRegisteredForThisCustomer = "Bu kart zaten geçerli müşteriye kayıtlı.";
+
+
+        public static string PasswordIsIncorrect = "Parola doğru değil.";
+        public static string PasswordUpdated = "Parola güncellendi.";
+        public static string PasswordsDoNotMatch = "Parolalar aynı değil.";
     }
 }
