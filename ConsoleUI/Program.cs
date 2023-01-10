@@ -17,9 +17,6 @@ using System.Net.Http.Headers;
 
 
 
-
-
-
 static void GetCarDetailsTest()
 {
     CarManager carManager = new CarManager(new EfCardal());

@@ -30,10 +30,6 @@ namespace Business.Concrete
         [ValidationAspect(typeof(CustomerValidator))]
         public IResult Add(Customer customer)
         {
-            if (customer.UserId == null && customer.CompanyName.Length <= 2 )
-            {
-                return new ErrorResult(Messages.CustomerInvalid);
-            }
             _customerDal.Add(customer);
             return new SuccessResult(Messages.CustomerAdded);
         }
