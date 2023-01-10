@@ -36,7 +36,7 @@ namespace Business.Concrete
 
 
         [CacheRemoveAspect("ICarService.Get")]
-        [SecuredOperation("admin,customer,user")]
+        //[SecuredOperation("admin,customer,user")]
         [ValidationAspect(typeof(RentValidator))]
         public IResult Add(Rent rent)
         {
