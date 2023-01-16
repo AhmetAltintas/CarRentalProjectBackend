@@ -36,9 +36,9 @@ namespace Business.Concrete
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
-            IResult result = BusinessRules.Run(CheckIfCarIdIsAlreadyExists(car.ModelName));
+            var result = RulesForAdding(car);
 
-            if (result != null)
+            if (!result.Success)
             {
                 return result;
             }
@@ -124,7 +124,14 @@ namespace Business.Concrete
 
 
 
+        public IResult RulesForAdding(Car car)
+        {
+            var result = BusinessRules.Run(
+                CheckIfCarIdIsAlreadyExists(car.ModelName));
+            if (result != null) return result;
 
+            return new SuccessResult();
+        }
 
 
         private IResult CheckIfCarIdIsAlreadyExists(string modelName)
