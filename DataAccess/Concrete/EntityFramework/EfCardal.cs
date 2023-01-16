@@ -37,6 +37,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  ModelYear = ca.ModelYear,
                                  Description = ca.Description,
                                  MinFindeksScore = ca.MinFindeksScore,
+                                 CarImages = context.CarImages.Where(ci => ci.CarId == ca.Id).ToList()
 
                              };
                 return result.ToList();
@@ -65,6 +66,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  ModelYear = ca.ModelYear,
                                  Description = ca.Description,
                                  MinFindeksScore = ca.MinFindeksScore,
+                                 CarImages = context.CarImages.Where(ci => ci.CarId == ca.Id).ToList()
                              };
                 return result.ToList();
             }
@@ -92,6 +94,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  ModelYear = ca.ModelYear,
                                  Description = ca.Description,
                                  MinFindeksScore = ca.MinFindeksScore,
+                                 CarImages = context.CarImages.Where(ci => ci.CarId == ca.Id).ToList()
                              };
                 return result.First();
             }
@@ -118,6 +121,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  ModelYear = ca.ModelYear,
                                  Description = ca.Description,
                                  MinFindeksScore = ca.MinFindeksScore,
+                                 CarImages = context.CarImages.Where(ci => ci.CarId == ca.Id).ToList()
 
                              };
                 return result.ToList();

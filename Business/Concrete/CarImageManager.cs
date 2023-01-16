@@ -30,13 +30,13 @@ namespace Business.Concrete
 
 
         [CacheRemoveAspect("ICarImageService.Get")]
-        [SecuredOperation("admin,customer")]
+        //[SecuredOperation("admin")]
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Add(IFormFile image, CarImage carImage)
         {
             // Business Rules
             var ruleResult = BusinessRules.Run(CheckImageLimitExceeded(carImage.CarId));
-            if (ruleResult != null)
+            if (!ruleResult.Success)
             {
                 return new ErrorResult(ruleResult.Message);
             }
@@ -53,7 +53,7 @@ namespace Business.Concrete
         }
 
 
-        [SecuredOperation("admin,customer")]
+        [SecuredOperation("admin")]
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Delete(CarImage carImage)
         {
@@ -68,7 +68,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarImageDeleted);
         }
 
-        [SecuredOperation("admin,customer")]
+        [SecuredOperation("admin")]
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Update(IFormFile image, CarImage carImage)
         {
