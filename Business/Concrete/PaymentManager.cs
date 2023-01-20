@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -61,6 +62,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Payment>(result);
         }
 
+        [TransactionScopeAspect]
         [ValidationAspect(typeof(PaymentValidator))]
         public IResult Pay(Payment payment)
         {
