@@ -3,8 +3,10 @@ using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Logging;
 using Core.Aspects.Autofac.Performance;
 using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -30,8 +32,8 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-
-        [CacheRemoveAspect("ICarService.Get")]
+        //[LogAspect(typeof(FileLogger))]
+        [LogAspect(typeof(MsSqlLogger))]
         [SecuredOperation("admin,customer")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
