@@ -4,6 +4,7 @@ using Autofac.Extensions.DependencyInjection;
 using Business.Abstract;
 using Business.Concrete;
 using Business.DependencyResolvers.Autofac;
+using Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
 using Core.DependencyResolvers;
 using Core.Extensions;
 using Core.Utilities.IoC;
@@ -59,6 +60,14 @@ builder.Services.AddDependencyResolvers(new ICoreModule[]
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddLogging(log =>
+{
+    log.ClearProviders();
+    log.SetMinimumLevel(LogLevel.Trace);
+});
+
+builder.Services.AddTransient<FileLogger>();
+builder.Services.AddTransient<MsSqlLogger>();
 
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
